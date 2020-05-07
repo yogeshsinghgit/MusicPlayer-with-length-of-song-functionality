@@ -14,10 +14,15 @@ class MusicPlayer():
         self.stop = True
         self.unpause = True
         self.vol = 1.0
+		# A debug variable 
+        self.debug = False
         self.song_name = 'pata nahi.mp3'
         # default song path only for testing purpose ...
-        self.path = 'C:/Users/alex/Desktop/Things/songs'
-        self.default_path = 'C:/Users/alex/Desktop/Things/songs'
+        self.path = filedialog.askdirectory(initialdir='/', title="Select a folder to play songs from")
+        if self.debug:
+            self.default_path = filedialog.askdirectory(initialdir='/', title="Select a default folder") 
+        else:
+            self.default_path = "/"
         self.tracks = []
         # initializing pygame constructor ....
         pygame.init()
@@ -220,8 +225,8 @@ if __name__ == '__main__':
     MusicPlayer(root)
     root.geometry('405x230+300+250')
     root.configure(background='blue')
-    icon = PhotoImage(file='C:\\Users\\alex\\PycharmProjects\\dynamic coding\\icon.png')
-    root.iconphoto(False,icon)
+    #icon = PhotoImage(file='D:\\OFER\\Python\\MusicPlayer-with-length-of-song-functionality\\icon.png')
+    #root.iconphoto(False,icon)
     root.resizable(0,0)
     root.title('Music Player')
     root.mainloop()
